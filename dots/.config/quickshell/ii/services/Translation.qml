@@ -28,7 +28,7 @@ Singleton {
         if (configLang !== "auto")
             return configLang;
 
-        return Qt.locale().name;
+        return Qt.locale("zh_CN").name;
     }
 
     TranslationScanner {

@@ -11,7 +11,7 @@ Rectangle {
     StyledText {
         anchors.centerIn: parent
         color: Appearance.colors.colSecondaryHover
-        text: Qt.locale().toString(DateTime.clock.date, "dd")
+        text: Qt.locale("zh_CN").toString(DateTime.clock.date, "dd")
         font {
             family: Appearance.font.family.expressive
             pixelSize: 20

@@ -173,7 +173,7 @@ ContentPage {
                     id: localeInput
                     Layout.fillWidth: true
                     placeholderText: Translation.tr("Locale code, e.g. fr_FR, de_DE, zh_CN...")
-                    text: Config.options.language.ui === "auto" ? Qt.locale().name : Config.options.language.ui
+                    text: Config.options.language.ui === "auto" ? Qt.locale("zh_CN").name : Config.options.language.ui
                 }
                 RippleButtonWithIcon {
                     id: generateTranslationBtn

@@ -1,8 +1,11 @@
 [DetailsMode]
-PreviewSize=32
+ExpandableFolders=false
+PreviewSize=22
 
 [General]
+DoubleClickViewAction=open_terminal
 GlobalViewProps=false
+RememberOpenedTabs=false
 ShowFullPath=true
 ShowStatusBar=FullWidth
 Version=202
@@ -15,4 +18,4 @@ Places Icons Static Size=22
 MenuBar=Disabled
 
 [PreviewSettings]
-Plugins=ffmpegthumbnailer,appimagethumbnail,audiothumbnail,avif,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,heif,imagethumbnail,jpegthumbnail,jxl,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,librsvg,svgthumbnail,ffmpegthumbs,gdk-pixbuf-thumbnailer,gsf-office
+Plugins=appimagethumbnail,comicbookthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,heif,jpegthumbnail,kraorathumbnail,windowsimagethumbnail,windowsexethumbnail,gsf-office,opendocumentthumbnail,svgthumbnail,cursorthumbnail,imagethumbnail,fontthumbnail,directorythumbnail,audiothumbnail
