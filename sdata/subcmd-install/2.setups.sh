@@ -67,6 +67,7 @@ if [[ "$OS_GROUP_ID" == "gentoo" ]]; then
   v sudo chown -R $(whoami):$(whoami) ~/.local/
 fi
 
-v gsettings set org.gnome.desktop.interface font-name 'Google Sans Flex Medium 11 @opsz=11,wght=500'
+# v gsettings set org.gnome.desktop.interface font-name 'Google Sans Flex Medium 11 @opsz=11,wght=500'
+gsettings set org.gnome.desktop.interface font-name 'Noto Sans CJK SC 11'
 v gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 v kwriteconfig6 --file kdeglobals --group KDE --key widgetStyle Darkly
