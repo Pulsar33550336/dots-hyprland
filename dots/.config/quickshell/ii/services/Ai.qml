@@ -137,7 +137,10 @@ Singleton {
                     "function": {
                         "name": "get_shell_config",
                         "description": "Get the desktop shell config file contents",
-                        "parameters": {}
+                        "parameters": {
+                            "type": "object",  
+                            "properties": {}
+                        }
                     },
                 },
                 {
@@ -305,6 +308,19 @@ Singleton {
             "key_id": "openrouter",
             "key_get_link": "https://openrouter.ai/settings/keys",
             "key_get_description": Translation.tr("**Pricing**: free. Data use policy varies depending on your OpenRouter account settings.\n\n**Instructions**: Log into OpenRouter account, go to Keys on the topright menu, click Create API Key"),
+        }),
+        "deepseek-v3.2": aiModelComponent.createObject(this, {
+            "name": "DeepSeek V3.2",
+            "icon": "deepseek-symbolic",
+            "description": Translation.tr("Online via %1 | %2's model").arg("DeepSeek").arg("DeepSeek"),
+            "homepage": "https://chat.deepseek.cpm",
+            "endpoint": "https://api.deepseek.com/chat/completions",
+            "model": "deepseek-chat",
+            "requires_key": true,
+            "key_id": "deepseek",
+            "key_get_link": "https://platform.deepseek.com/api_keys",
+            "key_get_description": Translation.tr("**Pricing**: free. Data use policy varies depending on your OpenRouter account settings.\n\n**Instructions**: Log into OpenRouter account, go to Keys on the topright menu, click Create API Key"),
+            "api_format": "openai"
         }),
     }
     property var modelList: Object.keys(root.models)
