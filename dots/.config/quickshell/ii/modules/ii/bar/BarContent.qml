@@ -174,7 +174,26 @@ Item { // Bar content region
 
                 }
 
-                WeatherBar {}
+                Loader {
+                    Layout.leftMargin: 4
+                    active: Config.options.bar.weather.enable
+                    
+                    sourceComponent: Item {
+                        implicitWidth: weatherBar.implicitWidth
+                        implicitHeight: weatherBar.implicitHeight
+                        
+                        WeatherBar {
+                            id: weatherBar
+                            anchors.fill: parent
+                        }
+                    }
+                    
+                    // 控制布局属性
+                    Layout.preferredWidth: active ? (item ? item.implicitWidth : 0) : 0
+                    Layout.preferredHeight: active ? (item ? item.implicitHeight : 0) : 0
+                    Layout.minimumWidth: 0
+                    Layout.maximumWidth: active ? (item ? item.implicitWidth : Infinity) : 0
+                }
                 
                 UtilButtons {
                     visible: (Config.options.bar.verbose && root.useShortenedForm === 0)
@@ -187,15 +206,6 @@ Item { // Bar content region
                     Layout.alignment: Qt.AlignVCenter
                     // width: contentWidth
                 }
-                
-                // // Weather
-                // Loader {
-                //     Layout.leftMargin: 4
-                //     active: Config.options.bar.weather.enable
-
-                //     sourceComponent: BarGroup {
-                //     }
-                // }
             }
             
         }
