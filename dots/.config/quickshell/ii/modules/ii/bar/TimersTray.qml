@@ -53,6 +53,7 @@ BarGroup {
                 }
                 color: Appearance.colors.colOnLayer1
                 font.pixelSize: Appearance.font.pixelSize.small
+                font.family: Appearance.font.family.monospace
                 Layout.alignment: Qt.AlignVCenter
             }
         }
@@ -78,6 +79,7 @@ BarGroup {
                 }
                 color: Appearance.colors.colOnLayer1
                 font.pixelSize: Appearance.font.pixelSize.small
+                font.family: Appearance.font.family.monospace
                 Layout.alignment: Qt.AlignVCenter
             }
         }

@@ -124,134 +124,134 @@ MouseArea {
     // }
 
     // SysTray at the top
-    Item {
-        id: sysTrayContainer
-        anchors {
-            top: parent.top
-            horizontalCenter: parent.horizontalCenter
-            topMargin: 20
-        }
-        implicitWidth: sysTrayLayout.implicitWidth
-        implicitHeight: sysTrayLayout.implicitHeight
-        scale: root.toolbarScale
-        opacity: root.toolbarOpacity
+    // Item {
+    //     id: sysTrayContainer
+    //     anchors {
+    //         top: parent.top
+    //         horizontalCenter: parent.horizontalCenter
+    //         topMargin: 20
+    //     }
+    //     implicitWidth: sysTrayLayout.implicitWidth
+    //     implicitHeight: sysTrayLayout.implicitHeight
+    //     scale: root.toolbarScale
+    //     opacity: root.toolbarOpacity
         
-        // Transparent background (no Toolbar background)
-        RowLayout {
-            id: sysTrayLayout
-            anchors.centerIn: parent
-            spacing: 8
+    //     // Transparent background (no Toolbar background)
+    //     RowLayout {
+    //         id: sysTrayLayout
+    //         anchors.centerIn: parent
+    //         spacing: 8
             
-            // Show all system tray items (no pin logic, read-only on lock screen)
-            Repeater {
-                model: ScriptModel {
-                    values: SystemTray.items.values.filter(i => i.status !== Status.Passive)
-                }
+    //         // Show all system tray items (no pin logic, read-only on lock screen)
+    //         Repeater {
+    //             model: ScriptModel {
+    //                 values: SystemTray.items.values.filter(i => i.status !== Status.Passive)
+    //             }
                 
-                delegate: Item {
-                    required property SystemTrayItem modelData
-                    Layout.preferredWidth: 24
-                    Layout.preferredHeight: 24
+    //             delegate: Item {
+    //                 required property SystemTrayItem modelData
+    //                 Layout.preferredWidth: 24
+    //                 Layout.preferredHeight: 24
                     
-                    // Get notification count for this app
-                    readonly property int notificationCount: {
-                        if (!modelData) return 0;
-                        // Try to match by app name or id
-                        const appName = modelData.title || modelData.id || "";
-                        return Notifications.list.filter(n => {
-                            return n.appName && (
-                                n.appName.toLowerCase().includes(appName.toLowerCase()) ||
-                                appName.toLowerCase().includes(n.appName.toLowerCase())
-                            );
-                        }).length;
-                    }
+    //                 // Get notification count for this app
+    //                 readonly property int notificationCount: {
+    //                     if (!modelData) return 0;
+    //                     // Try to match by app name or id
+    //                     const appName = modelData.title || modelData.id || "";
+    //                     return Notifications.list.filter(n => {
+    //                         return n.appName && (
+    //                             n.appName.toLowerCase().includes(appName.toLowerCase()) ||
+    //                             appName.toLowerCase().includes(n.appName.toLowerCase())
+    //                         );
+    //                     }).length;
+    //                 }
                     
-                    // Disable all interactions - only show icon
-                    MouseArea {
-                        id: lockTrayMouseArea
-                        anchors.fill: parent
-                        acceptedButtons: Qt.NoButton
-                        hoverEnabled: true
-                    }
+    //                 // Disable all interactions - only show icon
+    //                 MouseArea {
+    //                     id: lockTrayMouseArea
+    //                     anchors.fill: parent
+    //                     acceptedButtons: Qt.NoButton
+    //                     hoverEnabled: true
+    //                 }
                     
-                    // Show icon only (no interaction) - use same approach as SysTrayItem
-                    IconImage {
-                        id: trayIcon
-                        visible: !Config.options.bar.tray.monochromeIcons
-                        source: modelData.icon
-                        anchors.centerIn: parent
-                        width: parent.width
-                        height: parent.height
-                    }
+    //                 // Show icon only (no interaction) - use same approach as SysTrayItem
+    //                 IconImage {
+    //                     id: trayIcon
+    //                     visible: !Config.options.bar.tray.monochromeIcons
+    //                     source: modelData.icon
+    //                     anchors.centerIn: parent
+    //                     width: parent.width
+    //                     height: parent.height
+    //                 }
                     
-                    // Monochrome icon fallback
-                    Loader {
-                        active: Config.options.bar.tray.monochromeIcons
-                        anchors.fill: trayIcon
-                        sourceComponent: Item {
-                            Desaturate {
-                                id: desaturatedIcon
-                                visible: false
-                                anchors.fill: parent
-                                source: trayIcon
-                                desaturation: 0.8
-                            }
-                            ColorOverlay {
-                                anchors.fill: desaturatedIcon
-                                source: desaturatedIcon
-                                color: ColorUtils.transparentize(Appearance.colors.colOnLayer0, 0.9)
-                            }
-                        }
-                    }
+    //                 // Monochrome icon fallback
+    //                 Loader {
+    //                     active: Config.options.bar.tray.monochromeIcons
+    //                     anchors.fill: trayIcon
+    //                     sourceComponent: Item {
+    //                         Desaturate {
+    //                             id: desaturatedIcon
+    //                             visible: false
+    //                             anchors.fill: parent
+    //                             source: trayIcon
+    //                             desaturation: 0.8
+    //                         }
+    //                         ColorOverlay {
+    //                             anchors.fill: desaturatedIcon
+    //                             source: desaturatedIcon
+    //                             color: ColorUtils.transparentize(Appearance.colors.colOnLayer0, 0.9)
+    //                         }
+    //                     }
+    //                 }
                     
-                    // Notification/Message count badge
-                    Rectangle {
-                        id: badge
-                        visible: notificationCount > 0
-                        anchors {
-                            right: parent.right
-                            top: parent.top
-                            rightMargin: -4
-                            topMargin: -4
-                        }
-                        width: badgeText.visible ? Math.max(badgeText.implicitWidth + 4, 16) : 10
-                        height: badgeText.visible ? Math.max(badgeText.implicitHeight + 2, 16) : 10
-                        radius: height / 2
-                        color: Appearance.colors.colError
-                        z: 10
+    //                 // Notification/Message count badge
+    //                 Rectangle {
+    //                     id: badge
+    //                     visible: notificationCount > 0
+    //                     anchors {
+    //                         right: parent.right
+    //                         top: parent.top
+    //                         rightMargin: -4
+    //                         topMargin: -4
+    //                     }
+    //                     width: badgeText.visible ? Math.max(badgeText.implicitWidth + 4, 16) : 10
+    //                     height: badgeText.visible ? Math.max(badgeText.implicitHeight + 2, 16) : 10
+    //                     radius: height / 2
+    //                     color: Appearance.colors.colError
+    //                     z: 10
                         
-                        StyledText {
-                            id: badgeText
-                            visible: notificationCount > 0 && notificationCount <= 99
-                            anchors.centerIn: parent
-                            font.pixelSize: Appearance.font.pixelSize.smallest
-                            font.weight: Font.Bold
-                            color: Appearance.colors.colOnError
-                            text: notificationCount > 99 ? "99+" : notificationCount.toString()
-                        }
-                    }
+    //                     StyledText {
+    //                         id: badgeText
+    //                         visible: notificationCount > 0 && notificationCount <= 99
+    //                         anchors.centerIn: parent
+    //                         font.pixelSize: Appearance.font.pixelSize.smallest
+    //                         font.weight: Font.Bold
+    //                         color: Appearance.colors.colOnError
+    //                         text: notificationCount > 99 ? "99+" : notificationCount.toString()
+    //                     }
+    //                 }
                     
-                    // Tooltip for viewing info
-                    PopupToolTip {
-                        extraVisibleCondition: lockTrayMouseArea.containsMouse
-                        alternativeVisibleCondition: extraVisibleCondition
-                        anchorEdges: Edges.Bottom
-                        text: {
-                            let text = modelData.tooltipTitle.length > 0 ? modelData.tooltipTitle
-                                    : (modelData.title.length > 0 ? modelData.title : modelData.id);
-                            if (modelData.tooltipDescription.length > 0) {
-                                text += " • " + modelData.tooltipDescription;
-                            }
-                            if (notificationCount > 0) {
-                                text += `\n${Translation.tr("Notifications")}: ${notificationCount}`;
-                            }
-                            return text;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    //                 // Tooltip for viewing info
+    //                 PopupToolTip {
+    //                     extraVisibleCondition: lockTrayMouseArea.containsMouse
+    //                     alternativeVisibleCondition: extraVisibleCondition
+    //                     anchorEdges: Edges.Bottom
+    //                     text: {
+    //                         let text = modelData.tooltipTitle.length > 0 ? modelData.tooltipTitle
+    //                                 : (modelData.title.length > 0 ? modelData.title : modelData.id);
+    //                         if (modelData.tooltipDescription.length > 0) {
+    //                             text += " • " + modelData.tooltipDescription;
+    //                         }
+    //                         if (notificationCount > 0) {
+    //                             text += `\n${Translation.tr("Notifications")}: ${notificationCount}`;
+    //                         }
+    //                         return text;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
 
     // Music box (positioned below clock, only visible when music is playing)
@@ -280,18 +280,18 @@ MouseArea {
                 easing.type: Appearance.animation.elementMoveFast.type
             }
         }
-        Behavior on height {
-            NumberAnimation {
-                duration: Appearance.animation.elementMove.duration
-                easing.type: Appearance.animation.elementMove.type
-            }
-        }
-        Behavior on width {
-            NumberAnimation {
-                duration: Appearance.animation.elementMove.duration
-                easing.type: Appearance.animation.elementMove.type
-            }
-        }
+        // Behavior on height {
+        //     NumberAnimation {
+        //         duration: Appearance.animation.elementMove.duration
+        //         easing.type: Appearance.animation.elementMove.type
+        //     }
+        // }
+        // Behavior on width {
+        //     NumberAnimation {
+        //         duration: Appearance.animation.elementMove.duration
+        //         easing.type: Appearance.animation.elementMove.type
+        //     }
+        // }
         
         Loader {
             id: playerControlLoader

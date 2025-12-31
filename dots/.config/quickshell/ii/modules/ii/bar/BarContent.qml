@@ -165,23 +165,39 @@ Item { // Bar content region
             BarGroup {
                 id: rightCenterGroupContent
                 anchors.fill: parent
-
+                // width: contentWidth
                 ClockWidget {
                     showDate: (Config.options.bar.verbose && root.useShortenedForm < 2)
                     Layout.alignment: Qt.AlignVCenter
                     Layout.fillWidth: true
+                    // width: contentWidth
+
                 }
 
+                WeatherBar {}
+                
                 UtilButtons {
                     visible: (Config.options.bar.verbose && root.useShortenedForm === 0)
                     Layout.alignment: Qt.AlignVCenter
+                    // width: contentWidth
                 }
 
                 BatteryIndicator {
                     visible: (root.useShortenedForm < 2 && Battery.available)
                     Layout.alignment: Qt.AlignVCenter
+                    // width: contentWidth
                 }
+                
+                // // Weather
+                // Loader {
+                //     Layout.leftMargin: 4
+                //     active: Config.options.bar.weather.enable
+
+                //     sourceComponent: BarGroup {
+                //     }
+                // }
             }
+            
         }
     }
 
@@ -329,15 +345,7 @@ Item { // Bar content region
                 Layout.fillHeight: true
             }
 
-            // Weather
-            Loader {
-                Layout.leftMargin: 4
-                active: Config.options.bar.weather.enable
-
-                sourceComponent: BarGroup {
-                    WeatherBar {}
-                }
-            }
+            
         }
     }
 }
