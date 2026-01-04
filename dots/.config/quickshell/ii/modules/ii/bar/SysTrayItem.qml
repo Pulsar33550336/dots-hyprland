@@ -17,7 +17,7 @@ MouseArea {
     signal menuClosed()
 
     hoverEnabled: true
-    acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
+    acceptedButtons: Qt.LeftButton | Qt.RightButton
     implicitWidth: 20
     implicitHeight: 20
     onPressed: (event) => {
@@ -27,9 +27,6 @@ MouseArea {
             break;
         case Qt.RightButton:
             if (item.hasMenu) menu.open();
-            break;
-        case Qt.MiddleButton:
-            TrayService.togglePin(item);
             break;
         }
         event.accepted = true;
