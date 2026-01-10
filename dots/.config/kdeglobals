@@ -136,7 +136,8 @@ ForegroundVisited=#ebb2ff
 ColorScheme=MaterialYouDark
 ColorSchemeHash=df568bf2aeace4a3662720c2c4317935dfd26c55
 LastUsedCustomAccentColor=184,117,220
-TerminalApplication=konsole
+TerminalApplication=kitty
+TerminalService=kitty.desktop
 XftHintStyle=hintslight
 XftSubPixel=rgb
 font=Noto Sans CJK SC,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
@@ -180,4 +181,3 @@ activeForeground=224,226,231
 inactiveBackground=45,71,92
 inactiveBlend=161,169,177
 inactiveForeground=157,184,209
-
