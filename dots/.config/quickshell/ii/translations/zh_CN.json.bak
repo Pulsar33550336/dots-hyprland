@@ -748,5 +748,6 @@
   "Font roundness": "字体圆度",
   "Saved": "已保存",
   "Right to left": "从右到左",
-  "Levenshtein distance-based algorithm.\nBetter for typos, but may miss acronyms.": "基于 Levenshtein 距离的算法。\n更擅长处理拼写错误，但可能错过首字母缩写。"
+  "Levenshtein distance-based algorithm.\nBetter for typos, but may miss acronyms.": "基于 Levenshtein 距离的算法。\n更擅长处理拼写错误，但可能错过首字母缩写。",
+  "Last refresh: %1": "最后一次更新: %1"
 }
