@@ -49,7 +49,7 @@ Rectangle {
         active: root.showLabel
         sourceComponent: Rectangle {
             property real verticalPadding: 5
-            property real horizontalPadding: 10
+            property real horizontalPadding: 4
             radius: 10
             color: root.colBackground
             border.width: 1

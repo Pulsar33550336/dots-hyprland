@@ -21,66 +21,66 @@ IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=#40484f
-BackgroundNormal=#25282c
-DecorationFocus=#8fcdff
-DecorationHover=#8fcdff
-ForegroundActive=#e0e2e7
-ForegroundInactive=#8a929a
+BackgroundAlternate=#3f454b
+BackgroundNormal=#24282c
+DecorationFocus=#94c9f6
+DecorationHover=#94c9f6
+ForegroundActive=#e0e3e8
+ForegroundInactive=#8b9198
 ForegroundLink=#8fc9fc
 ForegroundNegative=#ffb3b4
 ForegroundNeutral=#fcb38a
-ForegroundNormal=#e0e2e7
+ForegroundNormal=#e0e3e8
 ForegroundPositive=#00e479
 ForegroundVisited=#ebb2ff
 
 [Colors:Complementary]
 BackgroundAlternate=#101417
 BackgroundNormal=#1c2024
-DecorationFocus=#8fcdff
-DecorationHover=#8fcdff
-ForegroundActive=#e0e2e7
-ForegroundInactive=#8a929a
+DecorationFocus=#94c9f6
+DecorationHover=#94c9f6
+ForegroundActive=#e0e3e8
+ForegroundInactive=#8b9198
 ForegroundLink=#8fc9fc
 ForegroundNegative=#ffb3b4
 ForegroundNeutral=#fcb38a
-ForegroundNormal=#c0c7d0
+ForegroundNormal=#c1c7ce
 ForegroundPositive=#00e479
 ForegroundVisited=#ebb2ff
 
 [Colors:Header]
 BackgroundAlternate=#1c2024
 BackgroundNormal=#1c2024
-DecorationFocus=#8fcdff
-DecorationHover=#8fcdff
-ForegroundActive=#e0e2e7
-ForegroundInactive=#8a929a
+DecorationFocus=#94c9f6
+DecorationHover=#94c9f6
+ForegroundActive=#e0e3e8
+ForegroundInactive=#8b9198
 ForegroundLink=#8fc9fc
 ForegroundNegative=#ffb3b4
 ForegroundNeutral=#fcb38a
-ForegroundNormal=#c0c7d0
+ForegroundNormal=#c1c7ce
 ForegroundPositive=#00e479
 ForegroundVisited=#ebb2ff
 
 [Colors:Header][Inactive]
 BackgroundAlternate=#1c2024
 BackgroundNormal=#1c2024
-DecorationFocus=#8fcdff
-DecorationHover=#8fcdff
-ForegroundActive=#e0e2e7
-ForegroundInactive=#8a929a
+DecorationFocus=#94c9f6
+DecorationHover=#94c9f6
+ForegroundActive=#e0e3e8
+ForegroundInactive=#8b9198
 ForegroundLink=#8fc9fc
 ForegroundNegative=#ffb3b4
 ForegroundNeutral=#fcb38a
-ForegroundNormal=#c0c7d0
+ForegroundNormal=#c1c7ce
 ForegroundPositive=#00e479
 ForegroundVisited=#ebb2ff
 
 [Colors:Selection]
-BackgroundAlternate=#8fcdff
-BackgroundNormal=#8fcdff
-DecorationFocus=#8fcdff
-DecorationHover=#afcae3
+BackgroundAlternate=#94c9f6
+BackgroundNormal=#94c9f6
+DecorationFocus=#94c9f6
+DecorationHover=#b6c6d6
 ForegroundActive=#003450
 ForegroundInactive=#003450
 ForegroundLink=#004b73
@@ -91,50 +91,50 @@ ForegroundPositive=#005228
 ForegroundVisited=#74009f
 
 [Colors:Tooltip]
-BackgroundAlternate=#40484f
+BackgroundAlternate=#3f454b
 BackgroundNormal=#1c2024
-DecorationFocus=#8fcdff
-DecorationHover=#8fcdff
-ForegroundActive=#e0e2e7
-ForegroundInactive=#8a929a
+DecorationFocus=#94c9f6
+DecorationHover=#94c9f6
+ForegroundActive=#e0e3e8
+ForegroundInactive=#8b9198
 ForegroundLink=#8fc9fc
 ForegroundNegative=#ffb3b4
 ForegroundNeutral=#fcb38a
-ForegroundNormal=#e0e2e7
+ForegroundNormal=#e0e3e8
 ForegroundPositive=#00e479
 ForegroundVisited=#ebb2ff
 
 [Colors:View]
 BackgroundAlternate=#1c2024
 BackgroundNormal=#101417
-DecorationFocus=#8fcdff
-DecorationHover=#006495
-ForegroundActive=#e0e2e7
-ForegroundInactive=#8a929a
+DecorationFocus=#94c9f6
+DecorationHover=#29638a
+ForegroundActive=#e0e3e8
+ForegroundInactive=#8b9198
 ForegroundLink=#8fc9fc
 ForegroundNegative=#ffb3b4
 ForegroundNeutral=#fcb38a
-ForegroundNormal=#e0e2e7
+ForegroundNormal=#e0e3e8
 ForegroundPositive=#00e479
 ForegroundVisited=#ebb2ff
 
 [Colors:Window]
-BackgroundAlternate=#40484f
+BackgroundAlternate=#3f454b
 BackgroundNormal=#1c2024
-DecorationFocus=#8fcdff
-DecorationHover=#8fcdff
+DecorationFocus=#94c9f6
+DecorationHover=#94c9f6
 ForegroundActive=#8fc9fc
-ForegroundInactive=#8a929a
+ForegroundInactive=#8b9198
 ForegroundLink=#8fc9fc
 ForegroundNegative=#ffb3b4
 ForegroundNeutral=#fcb38a
-ForegroundNormal=#c0c7d0
+ForegroundNormal=#c1c7ce
 ForegroundPositive=#00e479
 ForegroundVisited=#ebb2ff
 
 [General]
 ColorScheme=MaterialYouDark
-ColorSchemeHash=df568bf2aeace4a3662720c2c4317935dfd26c55
+ColorSchemeHash=056b4f91cd141fb3009fd6b1f4f0e64f5d36d54b
 LastUsedCustomAccentColor=184,117,220
 TerminalApplication=kitty
 TerminalService=kitty.desktop
@@ -150,7 +150,6 @@ Theme=Fluent-dark
 
 [KDE]
 ShowDeleteCommand=false
-widgetStyle=Darkly
 
 [KFileDialog Settings]
 Allow Expansion=false
@@ -174,10 +173,10 @@ EnableRemoteFolderThumbnail=false
 MaximumRemoteSize=0
 
 [WM]
-activeBackground=50,53,57
+activeBackground=47,51,55
 activeBlend=252,252,252
 activeFont=Noto Sans CJK SC,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-activeForeground=224,226,231
-inactiveBackground=45,71,92
+activeForeground=224,227,232
+inactiveBackground=59,75,89
 inactiveBlend=161,169,177
-inactiveForeground=157,184,209
+inactiveForeground=212,228,246
