@@ -35,7 +35,7 @@ PanelWindow {
     signal dismiss()
 
     property string screenshotDir: Directories.screenshotTemp
-    property color overlayColor: ColorUtils.transparentize("#000000", 0.4)
+    property color overlayColor: "#88111111"
     property color brightText: Appearance.m3colors.darkmode ? Appearance.colors.colOnLayer0 : Appearance.colors.colLayer0
     property color brightSecondary: Appearance.m3colors.darkmode ? Appearance.colors.colSecondary : Appearance.colors.colOnSecondary
     property color brightTertiary: Appearance.m3colors.darkmode ? Appearance.colors.colTertiary : Qt.lighter(Appearance.colors.colPrimary)
@@ -375,14 +375,6 @@ PanelWindow {
                 }
             }
 
-            CursorGuide {
-                z: 9999
-                x: root.dragging ? root.regionX + root.regionWidth : mouseArea.mouseX
-                y: root.dragging ? root.regionY + root.regionHeight : mouseArea.mouseY
-                action: root.action
-                selectionMode: root.selectionMode
-            }
-
             // Window regions
             Repeater {
                 model: ScriptModel {
@@ -455,7 +447,7 @@ PanelWindow {
             // Controls
             Row {
                 id: regionSelectionControls
-                z: 10
+                z: 9999
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                     bottom: parent.bottom
