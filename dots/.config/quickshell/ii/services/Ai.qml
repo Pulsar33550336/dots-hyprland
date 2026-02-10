@@ -77,7 +77,7 @@ Singleton {
         "{DISTRO}": SystemInfo.distroName,
         "{DATETIME}": `${DateTime.time}, ${DateTime.collapsedCalendarFormat}`,
         "{WINDOWCLASS}": ToplevelManager.activeToplevel?.appId ?? "Unknown",
-        "{DE}": `${SystemInfo.desktopEnvironment} (${SystemInfo.windowingSystem})` 
+        "{DE}": `${SystemInfo.desktopEnvironment} (${SystemInfo.windowingSystem})`
     }
 
     // Gemini: https://ai.google.dev/gemini-api/docs/function-calling
@@ -140,7 +140,7 @@ Singleton {
                         "name": "get_shell_config",
                         "description": "Get the desktop shell config file contents",
                         "parameters": {
-                            "type": "object",  
+                            "type": "object",
                             "properties": {}
                         }
                     },
@@ -298,18 +298,6 @@ Singleton {
             "key_get_link": "https://console.mistral.ai/api-keys",
             "key_get_description": Translation.tr("**Instructions**: Log into Mistral account, go to Keys on the sidebar, click Create new key"),
             "api_format": "mistral",
-        }),
-        "openrouter-deepseek-r1": aiModelComponent.createObject(this, {
-            "name": "DeepSeek R1",
-            "icon": "deepseek-symbolic",
-            "description": Translation.tr("Online via %1 | %2's model").arg("OpenRouter").arg("DeepSeek"),
-            "homepage": "https://openrouter.ai/deepseek/deepseek-r1:free",
-            "endpoint": "https://openrouter.ai/api/v1/chat/completions",
-            "model": "deepseek/deepseek-r1:free",
-            "requires_key": true,
-            "key_id": "openrouter",
-            "key_get_link": "https://openrouter.ai/settings/keys",
-            "key_get_description": Translation.tr("**Pricing**: free. Data use policy varies depending on your OpenRouter account settings.\n\n**Instructions**: Log into OpenRouter account, go to Keys on the topright menu, click Create API Key"),
         }),
         "deepseek-v3.2": aiModelComponent.createObject(this, {
             "name": "DeepSeek V3.2",
@@ -497,7 +485,7 @@ Singleton {
     function addApiKeyAdvice(model) {
         root.addMessage(
             Translation.tr('To set an API key, pass it with the %4 command\n\nTo view the key, pass "get" with the command<br/>\n\n### For %1:\n\n**Link**: %2\n\n%3')
-                .arg(model.name).arg(model.key_get_link).arg(model.key_get_description ?? Translation.tr("<i>No further instruction provided</i>")).arg("/key"), 
+                .arg(model.name).arg(model.key_get_link).arg(model.key_get_description ?? Translation.tr("<i>No further instruction provided</i>")).arg("/key"),
             Ai.interfaceRole
         );
     }
@@ -540,7 +528,7 @@ Singleton {
         Config.options.ai.tool = tool;
         return true;
     }
-    
+
     function getTemperature() {
         return root.temperature;
     }
@@ -621,7 +609,7 @@ Singleton {
 
             // Fetch API keys if needed
             if (model?.requires_key && !KeyringStorage.loaded) KeyringStorage.fetchKeyringData();
-            
+
             requester.currentStrategy = root.currentApiStrategy;
             requester.currentStrategy.reset(); // Reset strategy state
 
@@ -638,7 +626,7 @@ Singleton {
             let requestHeaders = {
                 "Content-Type": "application/json",
             }
-            
+
             /* Create local message object */
             requester.message = root.aiMessageComponent.createObject(root, {
                 "role": "assistant",
@@ -652,7 +640,7 @@ Singleton {
             root.messageIDs = [...root.messageIDs, id];
             root.messageByID[id] = requester.message;
 
-            /* Build header string for curl */ 
+            /* Build header string for curl */
             let headerString = Object.entries(requestHeaders)
                 .filter(([k, v]) => v && v.length > 0)
                 .map(([k, v]) => `-H '${k}: ${v}'`)
@@ -663,7 +651,7 @@ Singleton {
 
             /* Get authorization header from strategy */
             const authHeader = requester.currentStrategy.buildAuthorizationHeader(root.apiKeyEnvVarName);
-            
+
             /* Script shebang */
             const scriptShebang = "#!/usr/bin/env bash\n";
 
@@ -682,7 +670,7 @@ Singleton {
                 + (authHeader ? ` ${authHeader}` : "")
                 + ` --data '${CF.StringUtils.shellSingleQuoteEscape(JSON.stringify(data))}'`
                 + "\n"
-            
+
             /* Send the request */
             const scriptContent = requester.currentStrategy.finalizeScriptContent(scriptShebang + scriptFileSetupContent + scriptRequestContent)
             const shellScriptPath = CF.FileUtils.trimFileProtocol(root.requestScriptFilePath)
@@ -716,7 +704,7 @@ Singleton {
                     if (result.finished) {
                         requester.markDone();
                     }
-                    
+
                 } catch (e) {
                     console.log("[AI] Could not parse response: ", e);
                     requester.message.rawContent += data;
@@ -727,7 +715,7 @@ Singleton {
 
         onExited: (exitCode, exitStatus) => {
             const result = requester.currentStrategy.onRequestFinished(requester.message);
-            
+
             if (result.finished) {
                 requester.markDone();
             } else if (!requester.message.done) {
@@ -753,13 +741,13 @@ Singleton {
     function stopUserMessage() {
       if(root.requestRunning){
       requester.running = false //Sends SIGKILL to process
-    
+
       requester.message.content += "\n\n<span style='color:" + Appearance.m3colors.m3onError + "; font-weight:bold;'>Response canceled by user</span>"
       requester.message.rawContent += "\n\n<span style='color:" + Appearance.m3colors.m3onError + "; font-weight:bold;'>Response canceled by user</span>"
       }
 
-      
-      if(root.models[root.currentModelId].endpoint.includes("localhost")){ 
+
+      if(root.models[root.currentModelId].endpoint.includes("localhost")){
           stopOllamaLlm.running = true
           stopOllamaLlm.command = ["bash", "-c", "ollama stop " +root.models[root.currentModelId].model ]
           ollamCheckStatusTimer.running = false
