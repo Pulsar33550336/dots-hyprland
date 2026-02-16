@@ -118,10 +118,12 @@ Item { // Bar content region
                 Layout.fillWidth: root.useShortenedForm === 2
             }
 
+
             Media {
                 visible: root.useShortenedForm < 2
                 Layout.fillWidth: true
             }
+            
         }
 
         VerticalBarSeparator {
@@ -367,15 +369,6 @@ Item { // Bar content region
                 }
             }
 
-            // // Weather
-            // Loader {
-            //     Layout.leftMargin: 4
-            //     active: Config.options.bar.weather.enable
-
-            //     sourceComponent: BarGroup {
-            //         WeatherBar {}
-            //     }
-            // }
         }
     }
 }

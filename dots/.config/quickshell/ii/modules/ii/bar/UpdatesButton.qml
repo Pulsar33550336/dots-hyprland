@@ -11,15 +11,17 @@ MouseArea {
      implicitHeight: Appearance.sizes.barHeight
      
      hoverEnabled: true
-     acceptedButtons: Qt.LeftButton
+     acceptedButtons: Qt.LeftButton | Qt.RightButton
      
      onClicked: {
-         const pkg = Config.options.updates.packageManager;
-         if (pkg === "pacman") {
-             Quickshell.execDetached(["bash", "-c", Config.options.apps.update]);
-         } else {
-             Quickshell.execDetached(["bash", "-c", Config.options.apps.terminal + " -e " + pkg + " -Syu"]);
-         }
+         if (mouse.button === Qt.RightButton) {
+            const pkg = Config.options.updates.packageManager;
+            if (pkg === "pacman") {
+                Quickshell.execDetached(["zsh", "-c", Config.options.apps.update]);
+            } else {
+                Quickshell.execDetached(["zsh", "-c", Config.options.apps.terminal + " -e " + pkg + " -Syu"]);
+            }
+        }
      }
 
      RowLayout {
@@ -38,7 +40,6 @@ MouseArea {
              visible: true
              Layout.alignment: Qt.AlignVCenter
              font.pixelSize: Appearance.font.pixelSize.small
-             font.bold: true
              color: Appearance.colors.colOnLayer1
              text: Updates.count
          }
